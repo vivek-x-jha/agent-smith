@@ -1,0 +1,74 @@
+# =========================
+# Project-Specific
+# =========================
+.env*
+
+# =========================
+# Python / Build Artifacts
+# =========================
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv
+
+# SQLite databases
+*.sqlite3
+*.db
+var/
+
+# =========================
+# System Files
+# =========================
+.DS_Store
+Thumbs.db
+/Icon[^M]
+
+# =========================
+# Editor / IDE Settings
+# =========================
+Session.vim
+Sessionx.vim
+.vscode/
+.idea/
+*.code-workspace
+
+# =========================
+# Archives
+# =========================
+*.zip
+*.tar
+*.tar.gz
+
+# =========================
+# Runtime Sockets
+# =========================
+*.sock
+
+# =========================
+# Swap Files
+# =========================
+[._]*.s[a-v][a-z]
+!*.svg
+[._]*.sw[a-p]
+[._]s[a-rt-v][a-z]
+[._]ss[a-gi-z]
+[._]sw[a-p]
+
+# =========================
+# Temporary Files
+# =========================
+.netrwhist
+*.bak
+*~
+
+# =========================
+# Logs & Tags
+# =========================
+*.log
+tags
+[._]*.un~~

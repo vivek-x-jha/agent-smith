@@ -1,0 +1,128 @@
+You are an AI coding agent running in a terminal via the `codex` CLI.
+Your job is to scaffold and implement a full-stack AI backend project called agent-smith.
+
+The human will paste your outputs into their shell/editor as needed, so follow all formatting rules:
+- Shell commands: bash code fences.
+- File contents: full content in correct fence.
+- No hard-coded absolute paths; use relative or $HOME.
+- Prefer Python over JS.
+- Backend must use FastAPI.
+- Free/local models first, OpenAI optional toggle.
+- Maintain a detailed README.md and update it after major steps.
+
+GLOBAL CONVENTIONS
+Keep prompts, code, and scaffolding clean. Use pyproject.toml. Structure under agent_smith/.
+
+STEP 1 — PROJECT SCAFFOLD
+Create project directory agent-smith.
+Add pyproject.toml including:
+fastapi, uvicorn[standard], sqlmodel, chromadb, pydantic, httpx, beautifulsoup4, structlog, python-dotenv, duckduckgo-search.
+Create minimal README.md.
+Create directory structure:
+
+agent-smith/
+  pyproject.toml
+  README.md
+  prompts/
+    setup.txt
+  agent_smith/
+    __init__.py
+    app.py
+    config.py
+    models.py
+    db.py
+    logging_config.py
+    orchestrator.py
+    agents/
+      __init__.py
+      base.py
+      planner.py
+      researcher.py
+      curator.py
+      tutor.py
+    tools/
+      __init__.py
+      web.py
+      vector.py
+      llm.py
+
+Update README.md with Project Structure.
+
+STEP 2 — CONFIG & LOGGING
+Implement:
+config.py using Pydantic BaseSettings with:
+- AGENT_SMITH_ENV
+- OPENAI_API_KEY
+- DB paths
+logging_config.py using structlog JSON logs.
+Update README.md with Configuration section.
+
+STEP 3 — DATA & MEMORY LAYER
+Implement SQLModel models:
+LearningGoal
+PlanItem
+Resource
+QuizItem
+Episode
+
+Implement db.py:
+engine, init_db(), get_session()
+
+Implement tools/vector.py:
+Chroma collection, embedding function, upsert_resources(), search_resources().
+
+Update README.md with Data Model and Memory Systems.
+
+STEP 4 — TOOL LAYER FOR WEB/SEARCH
+Implement tools/web.py:
+duckduckgo_search()
+wikipedia_search()
+optional arxiv/hf_search
+Return title, url, snippet.
+
+Update README.md with Tooling section.
+
+STEP 5 — AGENT ABSTRACTION
+Implement agents/base.py with Agent ABC, Message alias.
+Implement planner.py, researcher.py, curator.py, tutor.py.
+Implement tools/llm.py: local or OpenAI selection.
+
+Update README.md with Agent Architecture and diagrams.
+
+STEP 6 — ORCHESTRATOR + FASTAPI API
+Implement orchestrator.py:
+run_day → runs Planner → Researcher → Curator → Tutor.
+Writes Episode.
+
+Implement app.py with routes:
+POST /goals
+GET /goals/{id}
+GET /goals/{id}/plan
+POST /goals/{id}/run/{day}
+GET /goals/{id}/quiz/{day}
+POST /quiz/{id}/answer
+GET /health
+
+Update README.md with API Reference and Getting Started.
+
+STEP 7 — SELF-CORRECTION & REFLECTION
+Add quiz correctness eval.
+LLM generates reflections.
+Rewrite future PlanItem tasks if needed.
+Save reflections in Episode.
+
+Update README.md with Self-Correction section.
+
+STEP 8 — QUALITY & FINAL README
+Add health endpoint.
+Optionally HTMX UI.
+Improve errors/logging.
+
+Finalize README.md:
+Design Goals & Philosophy
+Extending Agent Smith
+Next Steps
+Limitations
+License
+
+END OF INSTRUCTIONS
